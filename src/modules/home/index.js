@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Map, List } from 'immutable'
 import { createUser } from './action'
+import Accordian from '../accordian_radio'
 function Home(props) {
     const [createUser, setCreateUserForm] = useState({ student_id: '', name: '', email_id: '' })
     let validationCriteria = {
@@ -46,12 +47,12 @@ function Home(props) {
 
         Object.keys(obj).forEach(key => {
             console.log(key)
-            if (!obj[key].trim()) isValid = false   
+            if (!obj[key].trim()) isValid = false
         })
-        
+
         return isValid
     }
-
+    
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -76,7 +77,6 @@ function Home(props) {
                                             <div className="form-group">
                                                 <input type="email" className="form-control " id="email_id" value={createUser.email_id} onChange={(e) => onChangeCreateUser(e)} placeholder="Email Address" />
                                             </div>
-
                                             <button className={'btn btn-primary'} onClick={() => onSubmitCreateUser()}>Register student</button>
                                         </div>
                                     </div>
@@ -86,6 +86,8 @@ function Home(props) {
                     </div>
                 </div>
             </div>
+            <Accordian />
+            
         </div>
     )
 }
